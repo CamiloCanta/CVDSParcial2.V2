@@ -16,21 +16,18 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  *
  * @author hcadavid
  */
-public class Consulta {
-    //el identificador es asignado por la base de datos,
-    //por eso no se incluye en el constructor.
+public class Consulta implements Serializable {
+
     private int id;
-    
     private Date fechayHora;
     private String resumen;
-
-    
     
     public Consulta(Date fechayHora, String resumen) {
         this.id=-1;
@@ -38,8 +35,7 @@ public class Consulta {
         this.resumen = resumen;
     }    
     
-    public Consulta() {
-    }
+    public Consulta() {}
 
     public int getId() {
         return id;

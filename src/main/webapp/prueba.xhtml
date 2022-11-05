@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AddRecurso</title>
+    <link rel = "icon" href ="https://yt3.ggpht.com/ytc/AKedOLQQOBfPPzh-vTH-tz76NykBAc2aU9r4z4UkeJog=s900-c-k-c0x00ffffff-no-rj"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+            src="https://kit.fontawesome.com/7e5b2d153f.js"
+            crossorigin="anonymous"
+    ></script>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald;family=Staatliches;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../style/adminF.css" />
+
+</h:head>
+<h:body >
+    <h:form>
+        <header class="header">
+            <nav class="nav">
+                <div class="logos">
+                    <img class="login" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg/1280px-Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg.png" />
+                    <h1 class="tittleLogo" >Biblioteca ECI</h1>
+                </div>
+
+                <ul class="nav-menu">
+                    <li class="nav-menu-item">
+                        <a href="/faces/index.xhtml" class="nav-menu-link nav-link">Home</a>
+                    </li>
+
+                    <li class="nav-menu-item">
+                        <a onclick="history.back()" class="nav-menu-link nav-link">Atras</a>
+                    </li>
+
+                    <li class="nav-menu_visible" >
+                        <div>
+                            <i class="fas  icon" style="color: white;"/>
+                        </div>
+                        <p:panelMenu>
+                            <p:submenu label="Sesión" style="width: 165px; ">
+                                <p:menuitem icon="fas fa-user icon" value="#{usuariosBean.getUsuario(loginBean.user).nombre} #{usuariosBean.getUsuario(loginBean.user).apellido} "/>
+                                <p:menuitem icon="fas fa-check-circle icon" value="Cerrar Sesion" action="#{loginBean.logOut('/faces/public/misReservasxhtml')}" immediate="true"/>
+                            </p:submenu>
+                        </p:panelMenu>
+                    </li>
+                </ul>
+            </nav>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+        </header>
+    </h:form>
+
+    <h:form class="formulario">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg/1280px-Logo_de_la_Escuela_Colombiana_de_Ingenier%C3%ADa.svg.png" />
+        <h1>Agregar Recurso</h1>
+        <div class="contenedor">
+            <div class="input-contenedor">
+                <i class="fas fa fa-user icon"/>
+                <p:inputText type="String" placeholder="idInterno" value="#{recursosBean.idInterno}"/>
+            </div>
+            <div class="input-contenedor">
+                <i class="fas fa fa-user icon"/>
+                <p:inputText type="String" placeholder="Nombre" value="#{recursosBean.nombre}"/>
+            </div>
+            <div class="input-contenedor">
+                <i class="fas fa fa-check-square icon"/>
+                <p:selectOneMenu id="Ubicacion" value="#{recursosBean.ubicacion}">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Bloque A" itemValue="Bloque A"/>
+                    <f:selectItem itemLabel="Bloque G" itemValue="Bloque G"/>
+                </p:selectOneMenu>
+            </div>
+            <div class="input-contenedor">
+                <i class="fas fa fa-check-square icon"/>
+                <p:selectOneMenu id="Estado" value="#{recursosBean.estado}">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="disponible" itemValue="disponible"/>
+                    <f:selectItem itemLabel="agotado" itemValue="agotado"/>
+                </p:selectOneMenu>
+            </div>
+            <div class="input-contenedor">
+                <i class="fas fa fa-check-square icon"/>
+                <p:inputText type="String" placeholder="Capacidad" value=""/>
+            </div>
+            <div class="input-contenedor">
+                <i class="fas fa fa-check-square-o icon"/>
+                <p:inputTextarea type="String" placeholder="Descripcion" value=""/>
+            </div>
+            <div  class="input-contenedor">
+                <i class="fas fa fa-check-square icon"/>
+                <p:selectOneMenu id="Tipo" value="#{recursosBean.tipo}">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="libro" itemValue="libro"/>
+                    <f:selectItem itemLabel="equipo" itemValue="equipo"/>
+                    <f:selectItem itemLabel="sala" itemValue="sala"/>
+                </p:selectOneMenu>
+            </div>
+
+
+            <p:commandButton class="button" value="Registrar" actionListener="#{recursosBean.nuevoRecurso()}"/>
+
+            <p:commandButton  class="buttonCancel" value="Cancelar" onclick="history.back()" />
+            <p>Todos los campos tienen que estar completados.</p>
+        </div>
+    </h:form>
+
+</h:body>
+</html>

@@ -16,21 +16,30 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
+import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Paciente;
 import edu.eci.pdsw.samples.entities.TipoIdentificacion;
+import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosSuscripciones;
+import edu.eci.pdsw.samples.services.ServiciosPaciente;
 import edu.eci.pdsw.samples.services.ServiciosPacientesFactory;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author hcadavid
  */
+@SuppressWarnings("deprecation")
 @ManagedBean(name = "mb")
-@SessionScoped
-public class PacientesBean {
+@RequestScoped
+public class PacientesBean extends BasePageBean {
+
+
+    @Inject
+    ServiciosPaciente serviciosPaciente;
 
     TipoIdentificacion tipoIdentificacion = TipoIdentificacion.CC;
 
@@ -42,18 +51,28 @@ public class PacientesBean {
         return tipoIdentificacion;
     }
 
-    public List<Paciente> getData() throws Exception{
-        try {
-            return ServiciosPacientesFactory.getInstance().getForumsServices().consultarPacientes();
-        } catch (ExcepcionServiciosSuscripciones ex) {
-            
-            throw ex;
-        }
-        
-    }
-
     public TipoIdentificacion[] getTiposIdentificacion() {
         return TipoIdentificacion.values();
     }
-    
+
+    public List<Paciente> getData() throws Exception {
+        try {
+            return serviciosPaciente.consultarPacientes();
+        } catch (ExcepcionServiciosSuscripciones ex) {
+            throw ex;
+        }
+
+    }
+
+    public Paciente getPacienteForName(int id, TipoIdentificacion tipo) throws PersistenceException, ExcepcionServiciosSuscripciones {
+        return serviciosPaciente.consultarPacientesPorId(id, tipo);
+    }
+
+    public List<Paciente> getconsultarMenoresConEnfermedadContagiosa() throws PersistenceException, ExcepcionServiciosSuscripciones {
+        return serviciosPaciente.consultarMenoresConEnfermedadContagiosa();
+    }
 }
+
+
+    
+

@@ -10,15 +10,34 @@
         <id property='tipo_id' column='tipo_id' typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
         <result property='fechaNacimiento' column='fecha_nacimiento'/>
         <result property='nombre' column='nombre'/>
+        <collection property='consultas' javaType='ArrayList' ofType='Consulta' resultMap='edu.eci.pdsw.samples.persistence.mybatisimpl.mappers.ConsultaMapper.ConsultaResult' columnPrefix='consulta_'></collection>
     </resultMap>
 
     <select id="getPacientes" resultMap="PacienteResult">
-        SELECT
-            p.id,
-            p.tipo_id,
-            p.fecha_nacimiento,
-            p.nombre
-        FROM
-            PACIENTES as p
+        SELECT p.id,p.tipo_id, p.nombre, p.fecha_nacimiento,
+        c.idCONSULTAS as consulta_id, c.fecha_y_hora as consulta_fecha_y_hora, c.resumen as consulta_resumen,
+        c.PACIENTES_id as consulta_PACIENTE_id, c.PACIENTES_tipo_id as consulta_PACIENTES_tipo_id
+        FROM PACIENTES as p
+        LEFT JOIN CONSULTAS as c ON p.id = c.PACIENTES_id
     </select>
+
+    <select id="getPacientesPorId" resultMap="PacienteResult">
+        SELECT p.id,p.tipo_id, p.nombre, p.fecha_nacimiento,
+        c.idCONSULTAS as consulta_id, c.fecha_y_hora as consulta_fecha_y_hora, c.resumen as consulta_resumen,
+        c.PACIENTES_id as consulta_PACIENTE_id, c.PACIENTES_tipo_id as consulta_PACIENTES_tipo_id
+        FROM PACIENTES as p
+        LEFT JOIN CONSULTAS as c ON p.id = c.PACIENTES_id
+        WHERE p.id = #{id} and p.tipo_id = #{tipo}
+    </select>
+
+    <select id="getMenoresConEnfermedad" resultMap="PacienteResult">
+        SELECT p.id,p.tipo_id, p.nombre, p.fecha_nacimiento,
+        c.idCONSULTAS as consulta_id, c.fecha_y_hora as consulta_fecha_y_hora, c.resumen as consulta_resumen,
+        c.PACIENTES_id as consulta_PACIENTE_id, c.PACIENTES_tipo_id as consulta_PACIENTES_tipo_id
+        FROM PACIENTES as p
+        JOIN CONSULTAS as c ON p.id = c.PACIENTES_id
+        WHERE year(CURDATE())-year(p.fecha_nacimiento) &lt; 18
+        and c.resumen = 'Tiene varicela' or c.resumen = 'Tiene hepatitis'
+    </select>
+
 </mapper>

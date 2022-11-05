@@ -16,6 +16,7 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -26,26 +27,32 @@ import java.util.Set;
  *
  * @author hcadavid
  */
-public class Paciente {
+public class Paciente implements Serializable {
     
     private int id;
     private TipoIdentificacion tipo_id;
     private String nombre;
     private Date fechaNacimiento;
-    List<Consulta> consultas;
-    
+    private List<Consulta> consultas;
+
+
+    public Paciente(int id, TipoIdentificacion tipo_id, String nombre, Date fechaNacimiento, ArrayList<Consulta> consultas) {
+        this.id = id;
+        this.tipo_id = tipo_id;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.consultas = consultas;
+    }
 
     public Paciente(int id, TipoIdentificacion tipo_id, String nombre, Date fechaNacimiento) {
         this.id = id;
         this.tipo_id = tipo_id;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        consultas=new ArrayList<>();
+        this.consultas = new ArrayList<>();
     }
 
-    public Paciente() {
-        consultas=new ArrayList<>();
-    }
+    public Paciente() {}
 
     public int getId() {
         return id;
@@ -89,14 +96,12 @@ public class Paciente {
 
     @Override
     public String toString() {
-        StringBuffer rep = new StringBuffer("Paciente: { id:"+id+", tipo_id:"+tipo_id+", nombre: "+nombre+", fechaNacimiento: "+fechaNacimiento+", consultas : [\n");
-        for (Consulta c:consultas){
-            rep.append(c+"\n");
-        }
-        rep.append("]");
+        StringBuffer rep = new StringBuffer("Paciente: { id:"+id+", tipo_id:"+tipo_id+", nombre: "+nombre+
+                ", fechaNacimiento: "+fechaNacimiento+", consultas : " + consultas);
+
         return rep.toString();
     }
-    
-    
-    
+
+
+
 }

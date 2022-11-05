@@ -32,6 +32,7 @@ import java.util.List;
 public class MyBatisDAOPaciente implements DaoPaciente {
 
 
+
     @Inject
     PacienteMapper pacienteMapper;
     
@@ -53,7 +54,7 @@ public class MyBatisDAOPaciente implements DaoPaciente {
 
     @Override
     public void save(Paciente e) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         pacienteMapper.postPaciente(e);
     }
 
     @Override
@@ -63,8 +64,22 @@ public class MyBatisDAOPaciente implements DaoPaciente {
 
     @Override
     public void addConsulta(int id, TipoIdentificacion tipoId, Consulta c) throws PersistenceException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Paciente getPacientesForId(int id, TipoIdentificacion tipoIdentificacion) throws PersistenceException {
+        return pacienteMapper.getPacientesPorId(id, tipoIdentificacion);
+    }
+
+    @Override
+    public List<Paciente> getPacientes() throws PersistenceException {
+        return pacienteMapper.getPacientes();
 
     }
 
-
+    @Override
+    public List<Paciente> getMenoresConEnfermedad() throws PersistenceException {
+        return pacienteMapper.getMenoresConEnfermedad();
+    }
 }
