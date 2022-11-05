@@ -71,33 +71,64 @@ Mostrar los pacientes menores de edad que en sus consultas se encuentren las enf
 
 1. Documentar la solución en Readme de Git.
 
-##Solución
+## Solución
 
 1. El primer punto se realizara luego de implementar las pruebas de usuario para lograr implementar correctamente las pruebas unitarias.
 
-2. Para el segundo punto(Implemente la historia de usuario #1) se empezo a construir el codigo a fondo y como primer paso fue realizar dos clases de Beans (componente software que tiene la particularidad de ser reutilizable y así evitar la tediosa tarea de programar los distintos componentes uno a uno. Se puede decir que existen con la finalidad de ahorrarnos tiempo al programar).
+
+### Back-end
+2. Para el segundo punto(Implemente la historia de usuario #1) y tercer punto(Implemente la historia de usuario #2) se empezo a construir el codigo a fondo y como primer paso fue realizar dos clases de Beans (componente software que tiene la particularidad de ser reutilizable y así evitar la tediosa tarea de programar los distintos componentes uno a uno. Se puede decir que existen con la finalidad de ahorrarnos tiempo al programar).
 
 ![image](https://user-images.githubusercontent.com/108955358/200099221-d8ec9847-541b-4825-a99b-11cb8faeb46e.png)
+
 ![image](https://user-images.githubusercontent.com/108955358/200099234-35ce73bb-fb3f-4bcf-a0ea-bed20cceb0fb.png)
 ![image](https://user-images.githubusercontent.com/108955358/200099245-b9b58d14-bbfa-420a-892b-692dd29766ac.png)
 
+Ademas en el paquete de persistence se complemntan dos paquetes (mybatisimpl y mappers) con clases e interfaces.
+
+*ConsultaMapper*
+
+![image](https://user-images.githubusercontent.com/108955358/200099493-0876acd9-4d4d-42b5-9692-4ddaa766d904.png)
+
+*MyBatisDAOConsulta*
+
+![image](https://user-images.githubusercontent.com/108955358/200099528-bd0c62a6-04d5-4b68-846a-1a898e33bb0c.png)
+
+*DAOConsulta*
+
+![image](https://user-images.githubusercontent.com/108955358/200099540-9b0dec55-7458-4644-b507-08107e5b2f45.png)
+
+Una vez realizado esto, vamos al paquete services y creamos los metodos para realizar las consultas y crearemos una clase main.
+
+![image](https://user-images.githubusercontent.com/108955358/200099949-17ed59db-e3c4-4e59-96a7-838a6cb0092b.png)
+
+### Front-end
+
+En el paquete mappers realizamos las modificaiones para realizar las consultas a la base de datos, en consultaMapper se obtendran los usuarios y en Pacienteapper obtendremos el historial
+
+![image](https://user-images.githubusercontent.com/108955358/200100206-bdca76e7-6b75-4ef2-bf49-ba4bad8ab4ab.png)
+
+![image](https://user-images.githubusercontent.com/108955358/200100213-dd85afb1-7e8d-4ac4-aef6-6da4b4e434bf.png)
+
+Por ultimo nos dirigimos a la carpeta webapp para realizar las modificaciones en los .xhtml, y luego de correr los servicios se logra visualizar así:
+
+*Implemente la historia de usuario #1*
+
+![image](https://user-images.githubusercontent.com/108955358/200100355-60d73a45-bcbb-4232-a35f-dad49f83bb8b.png)
+
+*Implemente la historia de usuario #2*
+
+![image](https://user-images.githubusercontent.com/108955358/200100429-c4082099-f234-4df0-8b15-efaf8fa0fb16.png)
 
 
-## Bono
+### Pruebas 
 
-Si después de realizado el parcial, de forma INDIVIDUAL encuentra defectos menores (que impliquen a lo sumo cambiar 5 líneas de código), y que al corregirlos permiten que los puntos 2 o 3 funcionen:
+![image](https://user-images.githubusercontent.com/108955358/200100446-e57290f4-734b-4593-b8ba-55b29db91c31.png)
 
-1. Haga los ajustes en su código.
+![image](https://user-images.githubusercontent.com/108955358/200100504-6d20c0bf-e662-4d2a-8cff-26832c1132e1.png)
 
-2. Haga un nuevo commit con el mensaje "entrega bono, ahora funciona el Punto XX" , donde XX es el punto que se corrigió. 
 
-3. Ejecute:
 
-    ```bash
-    $ git diff --stat HEAD HEAD^^
-    ```
 
-4. Si el resultado del comando anterior es menor o igual a 10, puede aplicar al bono.
 
-5. Comprima la nueva versión siguiendo el esquema indicado en el parcial, y súbalo a más tardar el 24 de Marzo a las 11:59pm en el espacio correspondiente.
 
