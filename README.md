@@ -114,19 +114,18 @@ Por ultimo nos dirigimos a la carpeta webapp para realizar las modificaciones en
 
 *Implemente la historia de usuario #1*
 
-![image](https://user-images.githubusercontent.com/108955358/200100355-60d73a45-bcbb-4232-a35f-dad49f83bb8b.png)
+![image](https://user-images.githubusercontent.com/108955358/200121993-c3f10e9d-5856-4f7b-a26c-1bcef8669b80.png)
 
 *Implemente la historia de usuario #2*
 
-![image](https://user-images.githubusercontent.com/108955358/200100429-c4082099-f234-4df0-8b15-efaf8fa0fb16.png)
+![image](https://user-images.githubusercontent.com/108955358/200122129-a99c316a-32b8-4ece-b610-643b18e4c1f2.png)
 
 
 ### Pruebas 
 
-![image](https://user-images.githubusercontent.com/108955358/200100446-e57290f4-734b-4593-b8ba-55b29db91c31.png)
+![image](https://user-images.githubusercontent.com/108955358/200122052-64439ccd-08c3-43fe-9976-813d73ea9594.png)
 
-![image](https://user-images.githubusercontent.com/108955358/200100504-6d20c0bf-e662-4d2a-8cff-26832c1132e1.png)
-
+![image](https://user-images.githubusercontent.com/108955358/200122069-3e7e2d42-b1b8-477d-85c3-68a123d1befb.png)
 
 
 
