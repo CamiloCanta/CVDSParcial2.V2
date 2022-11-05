@@ -71,6 +71,18 @@ Mostrar los pacientes menores de edad que en sus consultas se encuentren las enf
 
 1. Documentar la solución en Readme de Git.
 
+##Solución
+
+1. El primer punto se realizara luego de implementar las pruebas de usuario para lograr implementar correctamente las pruebas unitarias.
+
+2. Para el segundo punto(Implemente la historia de usuario #1) se empezo a construir el codigo a fondo y como primer paso fue realizar dos clases de Beans (componente software que tiene la particularidad de ser reutilizable y así evitar la tediosa tarea de programar los distintos componentes uno a uno. Se puede decir que existen con la finalidad de ahorrarnos tiempo al programar).
+
+![image](https://user-images.githubusercontent.com/108955358/200099221-d8ec9847-541b-4825-a99b-11cb8faeb46e.png)
+![image](https://user-images.githubusercontent.com/108955358/200099234-35ce73bb-fb3f-4bcf-a0ea-bed20cceb0fb.png)
+![image](https://user-images.githubusercontent.com/108955358/200099245-b9b58d14-bbfa-420a-892b-692dd29766ac.png)
+
+
+
 ## Bono
 
 Si después de realizado el parcial, de forma INDIVIDUAL encuentra defectos menores (que impliquen a lo sumo cambiar 5 líneas de código), y que al corregirlos permiten que los puntos 2 o 3 funcionen:
